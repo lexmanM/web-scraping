@@ -1,2 +1,2 @@
-# web-scraping
-Code chunks of web scrapers built in python. 
+# web-scraping-and-crawling
+Code chunks of web crawlers built in python. 
