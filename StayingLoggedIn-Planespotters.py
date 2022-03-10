@@ -10,10 +10,6 @@ from bs4 import BeautifulSoup
 import requests
 import time
 
-# PART 1
-
-# (1)
-
 # Hitting the login page to check if it responds with a cookie
 
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15'}
@@ -41,8 +37,6 @@ print(rid)
 
 # The rid variable seemed to be populated when I checked the website but it returns None sometimes. It's not needed all the time I guess.
 
-# (2)
-
 time.sleep(5)
 
 session_requests = requests.session()
@@ -55,12 +49,9 @@ res = session_requests.post(URL, data = {"username" : "xalukin",
                             cookies = cookie1,
                             timeout = 15)
 
-# (3)
 
 cookie2 = session_requests.cookies.get_dict()
 #print(cookie2)
-
-# (4)
 
 URL2 = 'https://www.planespotters.net/member/profile'
 
@@ -70,7 +61,7 @@ page2 = session_requests.get(URL2,
         
 doc2 = BeautifulSoup(page2.content, 'html.parser')
 
-# (5)
+# Extracting the cookie information
 
 print(doc2)
 
