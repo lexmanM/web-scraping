@@ -14,17 +14,14 @@ import random
 import codecs
 from bs4 import BeautifulSoup
 
-# Setting working directory
-os. chdir('/Users/lexman/Documents/msba/Coursework/BAX 422 - Data Design and Representation/Individual Project')
-
-## Q2 (a)
+## Setting the headers
 
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15'}
 
 main_URL = "https://www.barnesandnoble.com/b/books/_/N-1fZ29Z8q8?Nrpp=40&page=1"
 page1 = requests.get(main_URL, headers=headers)
 
-## Q2 (b)
+## Iterating through the webpage's elements
 
 soup1 = BeautifulSoup(page1.content, "html.parser")
 
@@ -38,7 +35,7 @@ for books in soup1.find_all('div', {'class': 'product-shelf-title'}):
     
 len(urls)
 
-## Q2 (c)
+## Saving them locally
 
 for i in range(40):
     page2 = requests.get(urls[i], headers=headers)
@@ -55,7 +52,7 @@ for i in range(40):
     wait_time = random.randrange(5,8)
     time.sleep(wait_time)
     
-## Q2 (d)
+## Reading the local file to extract necessary information
 
 
 for i in range(40):
