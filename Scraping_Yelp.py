@@ -18,9 +18,7 @@ import re
 from pymongo import MongoClient
 import json
 
-os.chdir('/Users/lexman/Documents/msba/Coursework/BAX 422 - Data Design and Representation/Individual Project II')
-
-## Question 1
+## Scraping the top 40 donut shops in San Francisco and saving the pages locally
 
 for i in range(4):
     URL1 = "https://www.yelp.com/search?find_desc=donut+shop&find_loc=San+Francisco%2C+CA&start="+str(i*10)
@@ -40,7 +38,7 @@ for i in range(4):
     wait_time = random.randrange(10,15)
     time.sleep(wait_time)
 
-## Question 2
+## Extract restaurant specific information from the webpages
 
 def first_letter(s):
     m = re.search(r'[a-z]', s, re.I)
@@ -121,7 +119,7 @@ for i in range(4):
                 print("-----")
 
 
-## Question 3
+## MongoDB database
 
 #Creating a pymongo client
 client = MongoClient('localhost', 27017)
@@ -223,7 +221,7 @@ for i in range(4):
 
                 
                 
-## Question 4
+## Saving the files locally
 
 for x in collection.find({},{"url": 1, "search rank": 1}):
     
@@ -253,7 +251,7 @@ for x in collection.find({},{"url": 1, "search rank": 1}):
 
     
     
-## Question 5
+## Extract additional information from the restaurant webpage
 
 for i in range(40):
     file_name = "sf_donut_shop_"+str(i+1)+".html" 
@@ -289,7 +287,7 @@ for i in range(40):
 
 
 
-## Question 6
+## Extract the geolocation of the restaurant and save it along with other info in the MongoDB
 
 for i in range(40):
     file_name = "sf_donut_shop_"+str(i+1)+".html" 
